@@ -1,23 +1,84 @@
-# Everbook-info
+# 📚 Everbook-info
 
-A polished, responsive demo storefront for **Everbook-info**, an online bookstore focused on clean discovery and well-organized categories.
+**Discover Your Next Great Read**
 
-## Included
+Everbook-info is a polished, responsive online bookstore demo with a broad catalog, clear category organization, real book-cover requests by ISBN, edition-specific reference prices, search, sorting, product details, and a working browser-side shopping cart.
 
-- 28 featured books across 7 categories
-- Search, category filters, and price/title sorting
-- Real book-cover requests by ISBN through Open Library Covers, with local offline fallbacks
-- Reference retail/list prices in USD for specific editions
-- Book detail modal
-- Working demo shopping cart using localStorage
-- Responsive desktop, tablet, and mobile layouts
-- Reader advisory contact section
-- Newsletter UI
-- Local optimized Everbook-info logo
+## ✨ What is included
 
-## Run locally
+- **96 curated books**
+- **12 categories**
+- Search by **title, author, ISBN, or category**
+- Category filters and category discovery cards
+- Sort by featured order, price, title, or author
+- Progressive **Load more** catalog browsing
+- Shopping cart stored in `localStorage`
+- Responsive desktop, tablet, and mobile layout
+- Product detail modal
+- Everbook-info logo in the header, hero, about section, footer, and favicon
+- Reader advisory section
+- Newsletter demo form
+- Local branded fallback cover for every book
+- External real-cover requests through Open Library's Covers API using ISBN
 
-Open `index.html` in a browser, or use a simple local server:
+## 📚 Categories
+
+1. Classics
+2. Mystery & Thriller
+3. Fantasy
+4. Science Fiction
+5. Romance
+6. Horror
+7. Self-Development
+8. Business & Finance
+9. Biography & Memoir
+10. Kids & Young Readers
+11. Young Adult
+12. History & Society
+
+Each category contains **8 selected titles**.
+
+## 🖼️ Book covers
+
+The website requests cover images from Open Library using the ISBN of the selected edition:
+
+`https://covers.openlibrary.org/b/isbn/ISBN-M.jpg?default=false`
+
+If a cover is unavailable or the visitor is offline, the website automatically displays a local Everbook-info fallback cover included inside `assets/fallbacks/`.
+
+## 💵 Pricing
+
+Prices in the catalog are **edition-specific retail/list reference prices in USD**. Book prices can change by retailer, promotion, format, and date, so production stores should connect a live catalog or commerce backend before taking orders.
+
+## ☎️ Reader advisory
+
+The demo uses the reserved fictional North American number:
+
+**+1 (202) 555-0147**
+
+Replace it with the real Everbook-info business number before launch.
+
+## 📁 Structure
+
+```text
+everbook-info-store/
+├── index.html
+├── README.md
+├── SOURCES.md
+├── preview.png
+└── assets/
+    ├── app.js
+    ├── data.js
+    ├── styles.css
+    ├── img/
+    │   └── everbook-logo.webp
+    └── fallbacks/
+        └── [96 local fallback covers]
+```
+
+## 🚀 Run locally
+
+Open `index.html` in a modern browser, or serve the folder using a simple local web server.
 
 ```bash
 python -m http.server 8000
@@ -25,18 +86,10 @@ python -m http.server 8000
 
 Then visit `http://localhost:8000`.
 
-## Pricing note
+## ⚠️ Demo storefront notice
 
-Prices in the catalog are reference retail/list prices for the listed formats/editions and can change by retailer, promotion, region, and date. Before launching a real store, connect the catalog to your inventory or commerce provider for live pricing and stock.
+The checkout button is intentionally a demo and is **not connected to a payment processor**. Before launch, connect a secure payment provider, real inventory, shipping, tax, customer support, and order-management systems.
 
-## Cover images
+---
 
-The storefront requests book cover art by ISBN from the public Open Library Covers service. If a cover cannot load, a local Everbook-info fallback cover is displayed automatically so the page never shows a broken image.
-
-## Advisory number
-
-The included `+1 (202) 555-0147` number is an example/reserved-style placeholder for layout purposes. Replace it with your actual customer advisory number before launch.
-
-## Important
-
-This project is a front-end storefront demo. Checkout is intentionally not connected to a payment processor. Do not place secret keys or payment credentials in the repository.
+Made for **Everbook-info**.

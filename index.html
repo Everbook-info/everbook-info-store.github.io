@@ -3,20 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Everbook-info — a modern online bookstore with classics, thrillers, fantasy, romance, horror, self-development, and books for young readers." />
+  <meta name="description" content="Everbook-info — a modern online bookstore with 96 curated titles across classics, mystery, fantasy, science fiction, romance, horror, self-development, business, biographies, young readers, young adult, and history." />
+  <meta name="theme-color" content="#fff7fb" />
   <title>Everbook-info | Discover Your Next Great Read</title>
-  <link rel="preconnect" href="https://covers.openlibrary.org" />
+  <link rel="icon" href="assets/img/everbook-logo.webp" type="image/webp" />
+  <link rel="preconnect" href="https://covers.openlibrary.org" crossorigin />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
-  <div class="announcement">Free U.S. shipping on orders over $50 · Reader advisory available</div>
+  <div class="announcement">Free U.S. shipping on orders over $50 · Reader advisory available · 96 curated titles</div>
+
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Everbook-info home">
-      <img src="assets/img/everbook-logo.webp" alt="Everbook-info logo" />
+      <img src="assets/img/everbook-logo.webp" alt="Everbook-info logo" width="72" height="72" />
       <div><strong>Everbook-info</strong><span>Discover your next great read</span></div>
     </a>
     <nav class="nav-links" aria-label="Main navigation">
-      <a href="#catalog">Books</a><a href="#categories">Categories</a><a href="#about">About</a><a href="#support">Support</a>
+      <a href="#catalog">Books</a><a href="#categories">Categories</a><a href="#about">About</a><a href="#support">Advisory</a>
     </nav>
     <button class="cart-button" id="cartButton" aria-label="Open shopping cart">Cart <span id="cartCount">0</span></button>
   </header>
@@ -24,63 +27,95 @@
   <main id="top">
     <section class="hero">
       <div class="hero-copy">
-        <span class="eyebrow">CURATED FOR EVERY KIND OF READER</span>
-        <h1>Stories worth keeping.<br><em>Books worth discovering.</em></h1>
-        <p>Explore timeless classics, page-turning thrillers, fantasy worlds, heartfelt romance, horror favorites, self-development essentials, and books for young readers.</p>
-        <div class="hero-actions"><a class="primary-btn" href="#catalog">Shop the collection</a><a class="secondary-btn" href="#support">Ask a book advisor</a></div>
-        <div class="hero-stats"><div><strong>28</strong><span>featured titles</span></div><div><strong>7</strong><span>curated categories</span></div><div><strong>USD</strong><span>reference retail prices</span></div></div>
+        <span class="eyebrow">A CURATED BOOKSTORE FOR EVERY READER</span>
+        <h1>Find a book you’ll<br><em>remember.</em></h1>
+        <p>Browse 96 hand-picked titles across 12 shelves—from timeless classics and page-turning mysteries to fantasy, science fiction, romance, horror, personal growth, business, memoir, children’s books, young adult, and history.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#catalog">Explore all books</a>
+          <a class="secondary-btn" href="#support">Ask a book advisor</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong id="heroBookCount">96</strong><span>curated titles</span></div>
+          <div><strong id="heroCategoryCount">12</strong><span>book categories</span></div>
+          <div><strong>USD</strong><span>edition reference prices</span></div>
+        </div>
       </div>
       <div class="hero-card">
         <div class="hero-card-inner">
-          <span>EVERBOOK EDIT</span>
-          <h2>Books for every mood.</h2>
-          <p>Hand-picked favorites, clear categories, and a clean shopping experience.</p>
-          <div class="mini-books"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="hero-logo-box"><img src="assets/img/everbook-logo.webp" alt="Everbook-info brand mark"></div>
+          <div class="hero-card-copy">
+            <span>EVERBOOK EDIT</span>
+            <h2>Your next shelf starts here.</h2>
+            <p>Real book-cover imagery is requested by ISBN from Open Library, with local branded fallbacks included in the ZIP.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="benefits">
-      <article><span>✦</span><div><strong>Curated selection</strong><small>Popular titles across major genres.</small></div></article>
-      <article><span>♡</span><div><strong>Reader-first experience</strong><small>Fast search, filters, and clear book details.</small></div></article>
-      <article><span>☎</span><div><strong>Book advisory</strong><small>Personalized suggestions when you need them.</small></div></article>
+      <article><span>✦</span><div><strong>96 curated titles</strong><small>More variety across 12 clearly divided shelves.</small></div></article>
+      <article><span>⌕</span><div><strong>Easy discovery</strong><small>Search, category filters, sorting, and load-more browsing.</small></div></article>
+      <article><span>☎</span><div><strong>Reader advisory</strong><small>A dedicated contact section for book guidance.</small></div></article>
+    </section>
+
+    <section class="category-showcase" id="categories" aria-labelledby="browseCategoriesTitle">
+      <div class="section-heading compact-heading">
+        <div><span class="eyebrow">BROWSE YOUR WAY</span><h2 id="browseCategoriesTitle">Explore by category</h2></div>
+        <p>Each shelf has eight selected titles, giving the store a broad catalog without losing organization.</p>
+      </div>
+      <div class="category-cards" id="categoryCards"></div>
     </section>
 
     <section class="catalog-section" id="catalog">
       <div class="section-heading">
-        <div><span class="eyebrow">EXPLORE THE SHELVES</span><h2>Featured Books</h2></div>
-        <p>Prices are shown in USD as reference retail/list prices for the specified editions and may change by retailer.</p>
+        <div><span class="eyebrow">THE EVERBOOK COLLECTION</span><h2>All Books</h2></div>
+        <p>Prices are shown in USD as edition-specific retail/list references. Retailer prices and promotions can change.</p>
       </div>
 
       <div class="toolbar">
-        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search by title or author…" autocomplete="off" /></label>
-        <select id="sortSelect" aria-label="Sort books"><option value="featured">Sort: Featured</option><option value="price-asc">Price: Low to High</option><option value="price-desc">Price: High to Low</option><option value="title">Title: A–Z</option></select>
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search title, author, ISBN or category…" autocomplete="off" /></label>
+        <select id="sortSelect" aria-label="Sort books">
+          <option value="featured">Sort: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="title">Title: A–Z</option>
+          <option value="author">Author: A–Z</option>
+        </select>
       </div>
 
-      <div class="category-pills" id="categories" aria-label="Book categories"></div>
-      <div class="results-line"><span id="resultsCount">28 books</span><button id="clearFilters" class="text-button">Clear filters</button></div>
+      <div class="category-pills" id="categoryPills" aria-label="Book categories"></div>
+      <div class="results-line"><span id="resultsCount">96 books</span><button id="clearFilters" class="text-button">Clear filters</button></div>
       <div class="book-grid" id="bookGrid"></div>
+      <div class="load-more-wrap"><button id="loadMore" class="load-more-btn">Load more books</button></div>
     </section>
 
     <section class="about" id="about">
-      <div class="about-mark">E</div>
-      <div><span class="eyebrow">ABOUT EVERBOOK-INFO</span><h2>A modern bookstore built around discovery.</h2><p>Everbook-info brings together recognizable titles across literature, mystery, fantasy, romance, horror, personal growth, and young readers. The design is intentionally simple: less clutter, better browsing, and more room for the books themselves.</p><div class="about-tags"><span>Responsive design</span><span>Category filters</span><span>Search</span><span>Shopping cart</span><span>Mobile friendly</span></div></div>
+      <div class="about-logo"><img src="assets/img/everbook-logo.webp" alt="Everbook-info logo"></div>
+      <div><span class="eyebrow">ABOUT EVERBOOK-INFO</span><h2>A cleaner, richer way to discover books.</h2><p>Everbook-info combines a broad catalog with a calm, editorial design. Books are organized into easy-to-scan shelves, each card includes edition details and ISBN, and the responsive layout works across desktop, tablet, and mobile.</p><div class="about-tags"><span>96 titles</span><span>12 categories</span><span>ISBN covers</span><span>Search</span><span>Sorting</span><span>Shopping cart</span><span>Responsive</span></div></div>
     </section>
 
     <section class="support" id="support">
-      <div><span class="eyebrow">PERSONAL BOOK ADVISORY</span><h2>Not sure what to read next?</h2><p>Talk with our reader advisory team for help choosing a genre, gift, age-appropriate title, or your next weekend read.</p></div>
-      <div class="contact-card"><span>Reader Advisory</span><a href="tel:+12025550147">+1 (202) 555-0147</a><small>Mon–Sat · 9:00 AM–6:00 PM ET</small><button onclick="navigator.clipboard && navigator.clipboard.writeText('+1 (202) 555-0147');this.textContent='Number copied'">Copy number</button></div>
+      <div><span class="eyebrow">PERSONAL BOOK ADVISORY</span><h2>Need help choosing your next book?</h2><p>Use our reader-advisory line for help choosing a genre, a gift, an age-appropriate title, or a weekend read. The number below is a safe demo contact and can be replaced with your real business line before launch.</p></div>
+      <div class="contact-card"><span>READER ADVISORY · DEMO LINE</span><a href="tel:+12025550147">+1 (202) 555-0147</a><small>Mon–Sat · 9:00 AM–6:00 PM ET</small><button id="copyNumber">Copy number</button></div>
     </section>
 
     <section class="newsletter">
-      <div><span class="eyebrow">THE EVERBOOK LETTER</span><h2>Fresh reads, once in a while.</h2><p>New arrivals, category spotlights, and seasonal reading lists.</p></div>
+      <div><span class="eyebrow">THE EVERBOOK LETTER</span><h2>Fresh reads, beautifully delivered.</h2><p>New arrivals, category spotlights, gift ideas, and seasonal reading lists.</p></div>
       <form id="newsletterForm"><input type="email" required placeholder="you@example.com" aria-label="Email address"><button type="submit">Join the list</button></form>
     </section>
   </main>
 
-  <footer><div class="footer-brand"><img src="assets/img/everbook-logo.webp" alt="Everbook-info"><div><strong>Everbook-info</strong><span>Discover Your Next Great Read</span></div></div><div class="footer-links"><a href="#catalog">Catalog</a><a href="#about">About</a><a href="#support">Advisory</a></div><p>© 2026 Everbook-info. Book covers and titles remain the property of their respective rights holders. Prices may vary by retailer.</p></footer>
+  <footer>
+    <div class="footer-brand"><img src="assets/img/everbook-logo.webp" alt="Everbook-info"><div><strong>Everbook-info</strong><span>Discover Your Next Great Read</span></div></div>
+    <div class="footer-links"><a href="#catalog">Catalog</a><a href="#about">About</a><a href="#support">Advisory</a><a href="https://openlibrary.org/" target="_blank" rel="noopener">Open Library</a></div>
+    <p>© 2026 Everbook-info. Book covers, titles, author names, and related marks remain the property of their respective rights holders. Cover images are requested by ISBN from Open Library when available. Prices are edition-specific reference/list prices and may vary by retailer.</p>
+  </footer>
 
-  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true"><div class="cart-head"><div><span class="eyebrow">YOUR CART</span><h3>Selected books</h3></div><button id="closeCart" aria-label="Close cart">×</button></div><div id="cartItems" class="cart-items"></div><div class="cart-footer"><div><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div><button id="checkoutBtn">Proceed to checkout</button><small>Demo storefront — checkout is not connected to a payment processor.</small></div></aside>
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-head"><div><span class="eyebrow">YOUR CART</span><h3>Selected books</h3></div><button id="closeCart" aria-label="Close cart">×</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer"><div><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div><button id="checkoutBtn">Proceed to checkout</button><small>Demo storefront — checkout is intentionally not connected to a payment processor.</small></div>
+  </aside>
   <div class="overlay" id="overlay"></div>
 
   <dialog id="bookDialog"><button class="dialog-close" id="dialogClose" aria-label="Close">×</button><div id="dialogBody"></div></dialog>

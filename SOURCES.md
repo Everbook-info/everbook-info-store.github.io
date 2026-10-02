@@ -1,24 +1,30 @@
-# Catalog sourcing notes
+# Sources & Data Notes
 
-Catalog values were prepared as reference prices for the listed editions. Representative verification sources consulted during the build included official publisher pages and major retailers, including Penguin Random House, Simon & Schuster, Hachette Book Group, Bloomsbury, Macmillan, Barnes & Noble, Walmart, and Bookshop.org.
+## Book covers
 
-Examples:
-- Atomic Habits — Penguin Random House: https://www.penguinrandomhouse.com/books/543993/atomic-habits-by-james-clear/9780735211292/
-- 1984 — Penguin Random House Retail: https://www.penguinrandomhouseretail.com/book/?isbn=9780451524935
-- Pride and Prejudice — Penguin Random House Retail: https://www.penguinrandomhouseretail.com/book/?isbn=9780141439518
-- The Great Gatsby — Simon & Schuster: https://www.simonandschuster.com/books/The-Great-Gatsby/F-Scott-Fitzgerald/9780743273565
-- Dune — Penguin Random House: https://www.penguinrandomhouse.com/books/352036/dune-movie-tie-in-by-frank-herbert/9780441172719/
-- A Court of Thorns and Roses — Bloomsbury: https://www.bloomsbury.com/us/court-of-thorns-and-roses-9781635575569/
-- Fourth Wing — BookPal: https://bookpal.com/fourth-wing-standard-edition-9781649374042/
-- The Silent Patient — Barnes & Noble: https://www.barnesandnoble.com/w/the-silent-patient-alex-michaelides/1128638857?ean=9781250301697
-- It Ends with Us — Simon & Schuster: https://www.simonandschuster.com/books/It-Ends-with-Us/Colleen-Hoover/It-Ends-with-Us/9781501110368
-- Beach Read — Penguin Random House: https://www.penguinrandomhouse.com/books/608898/beach-read-by-emily-henry/
-- People We Meet on Vacation — Penguin Random House: https://www.penguinrandomhouse.com/books/608899/people-we-meet-on-vacation-by-emily-henry/9781984806758/
-- It — Simon & Schuster: https://www.simonandschuster.com/books/It/Stephen-King/9781501142970
-- The Haunting of Hill House — Penguin Random House Library Marketing: https://penguinrandomhouselibrary.com/book/?isbn=9780143039983
-- Deep Work — Hachette Book Group: https://www.hachettebookgroup.com/titles/cal-newport/9781455586691/9781455586691/
-- How to Win Friends and Influence People — Simon & Schuster: https://www.simonandschuster.com/books/How-to-Win-Friends-and-Influence-People/Dale-Carnegie/Dale-Carnegie-Books/9780671027032
-- Wonder — Penguin Random House: https://www.penguinrandomhouse.com/books/208913/wonder-by-r-j-palacio/9780375869020/
-- The Very Hungry Caterpillar — Penguin Random House: https://www.penguinrandomhouse.com/books/301943/the-very-hungry-caterpillar-by-eric-carle/9780399226908/
+Book-cover images are requested at runtime from the **Open Library Covers API** using each edition's ISBN.
 
-Prices should be reviewed before production launch because retailer prices and promotions change.
+Documentation:
+- https://openlibrary.org/dev/docs/api/covers
+- https://openlibrary.org/dev/docs/api/books
+
+Open Library documents the ISBN cover URL format and recommends using `covers.openlibrary.org` for public-facing book-cover images.
+
+## Price references
+
+Catalog prices are stored as **edition-specific retail/list reference prices in USD**. Retailers can change prices at any time, so the storefront labels them as reference prices rather than guaranteeing a live checkout price.
+
+Examples used to validate the pricing approach:
+- Penguin Random House — *1984*, ISBN 9780451524935 — $12.00 mass market paperback
+- Penguin Random House — *Pride and Prejudice*, ISBN 9780141439518 — $9.00 paperback
+- Simon & Schuster — *The Great Gatsby*, ISBN 9780743273565 — $17.00 trade paperback
+- Simon & Schuster — *Fahrenheit 451*, ISBN 9781451673319 — $17.00 trade paperback
+- Hachette / Orbit — *The Fifth Season*, ISBN 9780316229296 — $19.99 trade paperback
+
+For production commerce, connect a live retailer, distributor, inventory, or commerce API so price and stock are updated automatically.
+
+## Rights
+
+Book titles, author names, cover artwork, publisher marks, and related intellectual property remain the property of their respective rights holders.
+
+The Everbook-info logo and local fallback covers are included as project assets.
